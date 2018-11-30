@@ -12,7 +12,6 @@ import (
 type deck []string
 
 func newDeck() deck {
-	//fruitFillter := deck{}
 	cards := deck{}
 
 	cardSuits := []string{"Apple", "Banana", "Orange", "Grasp"}
