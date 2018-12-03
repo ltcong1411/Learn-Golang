@@ -18,9 +18,7 @@ func newDeck() deck {
 	cardValues := []string{"One", "Two", "Three", "Four"}
 
 	for i, suit := range cardSuits {
-		// for _, value := range cardValues {
 		cards = append(cards, cardValues[i]+" of "+suit)
-		// }
 	}
 	return cards
 }
@@ -35,13 +33,17 @@ func deal(d deck, handSize int) (deck, deck) {
 	return d[:handSize], d[handSize:]
 }
 
+// ["apple", "banana", "orange"] => "apple,banana,orange"
 func (d deck) toString() string {
 	return strings.Join([]string(d), ",")
 }
+
+// create a file
 func (d deck) saveToFile(filename string) error {
 	return ioutil.WriteFile(filename, []byte(d.toString()), 0666)
 }
 
+// "apple,banana,orange" => ["apple", "banana", "orange"]
 func newDeckFromFile(filename string) deck {
 	bs, err := ioutil.ReadFile(filename)
 	if err != nil {
